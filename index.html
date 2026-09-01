@@ -438,32 +438,6 @@
             filter: drop-shadow(0 18px 32px rgba(244, 67, 54, 0.22));
         }
 
-        .ncf-card {
-            border-color: rgba(76, 175, 80, 0.45);
-            background: rgba(20, 40, 20, 0.85);
-        }
-        .card-link:hover .ncf-card {
-            border-color: #76ff03;
-            box-shadow: 0 20px 60px rgba(118, 255, 3, 0.25);
-        }
-        .ncf-card .card-icon {
-            filter: drop-shadow(0 18px 32px rgba(76, 175, 80, 0.32));
-        }
-        .ncf-seal {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.4rem;
-            font-weight: 900;
-            letter-spacing: 0.15em;
-            color: #76ff03;
-            text-shadow: 0 0 18px rgba(118,255,3,0.5);
-            border-radius: 50%;
-            background: radial-gradient(circle at 35% 35%, rgba(118,255,3,0.15), rgba(76,175,80,0.05));
-            border: 2px solid rgba(76,175,80,0.4);
-        }
 
         .r4-modal {
             position: fixed;
@@ -828,9 +802,6 @@
                 ammoTitle: 'Ammo Bonanza',
                 ammoDesc: 'Simulazione browser con 5000 run, istogramma distribuzione, senza dipendenze backend.',
                 ammoBtn: 'Avvia Simulazione',
-                ncfTitle: 'Menu Pianificazione',
-                ncfDesc: 'Portale tattico DJN: Planner S5, lista server, calcolatore Ammo Bonanza e guida completa Season 5.',
-                ncfBtn: 'Apri Pianificazione',
                 footerContact: 'Contatti:',
                 r4ErrorTitle: 'Codice R4 Non Valido',
                 r4ErrorMsg: 'Il codice R4 inserito non è corretto. Riprova.',
@@ -866,9 +837,6 @@
                 ammoTitle: 'Ammo Bonanza',
                 ammoDesc: 'Browser simulation with 5000 runs, distribution histogram and no backend dependency.',
                 ammoBtn: 'Run Simulation',
-                ncfTitle: 'Planning Menu',
-                ncfDesc: 'DJN tactical portal: S5 Planner, server list, Ammo Bonanza calculator and full Season 5 guide.',
-                ncfBtn: 'Open Planning',
                 footerContact: 'Contacts:',
                 r4ErrorTitle: 'Invalid R4 Code',
                 r4ErrorMsg: 'The R4 code entered is incorrect. Try again.',
@@ -904,9 +872,6 @@
                 ammoTitle: 'Ammo Bonanza',
                 ammoDesc: 'Simulation navigateur avec 5000 tours, histogramme de distribution, sans dépendance backend.',
                 ammoBtn: 'Lancer Simulation',
-                ncfTitle: 'Menu Planification',
-                ncfDesc: 'Portail tactique DJN : Planificateur S5, liste serveurs, calculateur Ammo Bonanza et guide complet Saison 5.',
-                ncfBtn: 'Ouvrir Planification',
                 footerContact: 'Contacts:',
                 r4ErrorTitle: 'Code R4 Invalide',
                 r4ErrorMsg: 'Le code R4 entré est incorrect. Réessayez.',
@@ -942,9 +907,6 @@
                 ammoTitle: 'Ammo Bonanza',
                 ammoDesc: 'Browser-Simulation mit 5000 Durchläufen, Verteilungshistogramm ohne Backend-Abhängigkeit.',
                 ammoBtn: 'Simulation starten',
-                ncfTitle: 'Planungsmenü',
-                ncfDesc: 'Taktisches DJN-Portal: S5-Planer, Serverliste, Ammo-Bonanza-Rechner und vollständiger Season-5-Guide.',
-                ncfBtn: 'Planung öffnen',
                 footerContact: 'Kontakte:',
                 r4ErrorTitle: 'Ungültiger R4-Code',
                 r4ErrorMsg: 'Der eingegebene R4-Code ist falsch. Versuchen Sie es erneut.',
@@ -1149,7 +1111,7 @@
                     url: 'alliance-strategy-ENHANCED.html'
                 },
                 {
-                    iconSrc: 'assets/generated-icons/lottery-ngc-3d.png',
+                    iconSrc: 'assets/generated-icons/lottery-djn-3d.svg',
                     iconAlt: 'Lottery icon',
                     title: t.smorfiaTitle,
                     description: t.smorfiaDesc,
@@ -1157,17 +1119,6 @@
                     class: 'smorfia-card',
                     locked: false,
                     url: 'smorfia-game.html'
-                },
-                {
-                    iconSrc: 'assets/generated-icons/ncf-3d.jpg',
-                    iconAlt: 'Menu Pianificazione icon',
-                    title: t.ncfTitle,
-                    description: t.ncfDesc,
-                    button: t.ncfBtn,
-                    class: 'ncf-card',
-                    locked: false,
-                    external: true,
-                    url: 'https://serafino86.github.io/lwmap/'
                 }
             ];
             
@@ -1175,10 +1126,7 @@
                 <a class="card-link" onclick="openApp('${card.url}', ${card.locked}, ${!!card.external}); return false;" href="#">
                     <div class="command-card ${card.class}">
                         ${card.locked ? '<div class="card-lock">🔒</div>' : ''}
-                        <div class="card-icon">${card.iconSrc
-                            ? `<img src="${card.iconSrc}" alt="${card.iconAlt}" loading="lazy">`
-                            : `<div class="ncf-seal">NCF</div>`
-                        }</div>
+                        <div class="card-icon"><img src="${card.iconSrc}" alt="${card.iconAlt}" loading="lazy"></div>
                         <h2 class="card-title">${card.title}</h2>
                         <p class="card-description">${card.description}</p>
                         <div class="card-button">${card.button}</div>

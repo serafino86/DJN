@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Lotteria DJN">
+  <defs>
+    <radialGradient id="ballPurple" cx="35%" cy="30%" r="75%">
+      <stop offset="0%" stop-color="#f0d5ff"/>
+      <stop offset="35%" stop-color="#c084fc"/>
+      <stop offset="75%" stop-color="#8b2fd6"/>
+      <stop offset="100%" stop-color="#4c1275"/>
+    </radialGradient>
+    <radialGradient id="ballGold" cx="35%" cy="30%" r="75%">
+      <stop offset="0%" stop-color="#fff6d8"/>
+      <stop offset="35%" stop-color="#ffd34d"/>
+      <stop offset="75%" stop-color="#e0930b"/>
+      <stop offset="100%" stop-color="#7a4700"/>
+    </radialGradient>
+    <radialGradient id="ballViolet" cx="35%" cy="30%" r="75%">
+      <stop offset="0%" stop-color="#e6e0ff"/>
+      <stop offset="35%" stop-color="#a78bfa"/>
+      <stop offset="75%" stop-color="#6d28d9"/>
+      <stop offset="100%" stop-color="#33096b"/>
+    </radialGradient>
+
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#c084fc" stop-opacity="0.55"/>
+      <stop offset="60%" stop-color="#a855f7" stop-opacity="0.14"/>
+      <stop offset="100%" stop-color="#a855f7" stop-opacity="0"/>
+    </radialGradient>
+
+    <linearGradient id="sheen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+
+    <filter id="drop" x="-40%" y="-40%" width="180%" height="190%">
+      <feDropShadow dx="0" dy="16" stdDeviation="18" flood-color="#2a0b45" flood-opacity="0.55"/>
+    </filter>
+  </defs>
+
+  <!-- alone dietro il gruppo -->
+  <circle cx="256" cy="262" r="212" fill="url(#glow)"/>
+
+  <g filter="url(#drop)">
+    <!-- pallina sinistra, arretrata -->
+    <g transform="translate(150 300)">
+      <circle r="92" fill="url(#ballViolet)"/>
+      <circle r="92" fill="none" stroke="#ffffff" stroke-opacity="0.22" stroke-width="3"/>
+      <ellipse cx="-26" cy="-38" rx="40" ry="26" fill="url(#sheen)" opacity="0.75" transform="rotate(-28)"/>
+      <circle cx="0" cy="6" r="52" fill="#fdfbff" opacity="0.96"/>
+      <text x="0" y="6" text-anchor="middle" dominant-baseline="central"
+            font-family="Impact, 'Arial Black', system-ui, sans-serif" font-size="58"
+            font-weight="900" fill="#4c1275">7</text>
+    </g>
+
+    <!-- pallina destra, arretrata -->
+    <g transform="translate(366 288)">
+      <circle r="86" fill="url(#ballPurple)"/>
+      <circle r="86" fill="none" stroke="#ffffff" stroke-opacity="0.22" stroke-width="3"/>
+      <ellipse cx="-24" cy="-36" rx="37" ry="24" fill="url(#sheen)" opacity="0.75" transform="rotate(-28)"/>
+      <circle cx="0" cy="6" r="49" fill="#fdfbff" opacity="0.96"/>
+      <text x="0" y="6" text-anchor="middle" dominant-baseline="central"
+            font-family="Impact, 'Arial Black', system-ui, sans-serif" font-size="52"
+            font-weight="900" fill="#5b1a90">22</text>
+    </g>
+
+    <!-- jolly in primo piano, oro -->
+    <g transform="translate(256 190)">
+      <circle r="112" fill="url(#ballGold)"/>
+      <circle r="112" fill="none" stroke="#ffffff" stroke-opacity="0.3" stroke-width="4"/>
+      <ellipse cx="-32" cy="-46" rx="50" ry="32" fill="url(#sheen)" opacity="0.8" transform="rotate(-28)"/>
+      <circle cx="0" cy="8" r="64" fill="#fffdf2" opacity="0.97"/>
+      <text x="0" y="10" text-anchor="middle" dominant-baseline="central"
+            font-family="Impact, 'Arial Black', system-ui, sans-serif" font-size="74"
+            font-weight="900" fill="#8a5200">J</text>
+    </g>
+  </g>
+
+  <!-- scintille -->
+  <g fill="#ffe9a8" opacity="0.9">
+    <path d="M96 132 l9 26 26 9 -26 9 -9 26 -9 -26 -26 -9 26 -9z"/>
+    <path d="M430 128 l7 20 20 7 -20 7 -7 20 -7 -20 -20 -7 20 -7z" opacity="0.75"/>
+    <path d="M62 330 l6 16 16 6 -16 6 -6 16 -6 -16 -16 -6 16 -6z" opacity="0.6"/>
+  </g>
+</svg>
