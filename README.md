@@ -24,23 +24,18 @@ Tutti i testi esistono in 4 lingue: **IT, EN, FR, DE**. Ogni nuova stringa va ag
 
 Google Apps Script + Google Sheet (dati di proprietà dell'alleanza, zero costi infrastruttura).
 
-⚠️ **Da configurare**: le pagine puntano a un placeholder. Sostituire in tutti i file:
+Endpoint attivo (deployment DJN):
 
 ```
-https://script.google.com/macros/s/REPLACE_WITH_DJN_DEPLOYMENT_ID/exec
+https://script.google.com/macros/s/AKfycbzMghSyLP_.../exec
 ```
 
-Costanti da aggiornare:
+Le 5 costanti del frontend (`API_URL`, `NGC_SCRIPT_URL`, `GOOGLE_SCRIPT_URL`,
+`SCRIPT_URL`, `GAS_URL`) puntano gia` a questo deployment.
 
-| File | Costante |
-|---|---|
-| `index.html` | `API_URL` |
-| `war-room-defense-tracker.html` | `NGC_SCRIPT_URL` |
-| `alliance-strategy-ENHANCED.html` | `GOOGLE_SCRIPT_URL` |
-| `ngc-personal-stats.html` | `SCRIPT_URL` |
-| `smorfia-game.html` | `GAS_URL` |
-
-Procedura completa: [INSTALLATION.md](INSTALLATION.md).
+Montaggio e valori da compilare: [backend-gas/README.md](backend-gas/README.md).
+⚠️ `INSTALLATION.md` e` il documento originale NGC e su alcuni punti non corrisponde
+al codice (dice foglio `Data` e codice in B2; sono `War Room Data` e H1/H2).
 
 Nome alleanza, colori, annunci e codice R4 arrivano dal backend (`?action=getConfig`), non dall'HTML.
 
