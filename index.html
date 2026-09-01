@@ -3,7 +3,7 @@
 <head>
 <!--
   ╔═══════════════════════════════════════════════════════════════════╗
-  ║  NGC Alliance Hub - Alliance Management System for Last War       ║
+  ║  DJN Alliance Hub - Alliance Management System for Last War       ║
   ║  Copyright (c) 2025 Serafino                                      ║
   ║  Contact: serafino.ngc@gmail.com                                  ║
   ║  All rights reserved.                                             ║
@@ -286,9 +286,21 @@
         }
 
         .card-icon {
-            font-size: 4em;
-            margin-bottom: 20px;
-            filter: drop-shadow(0 0 20px currentColor);
+            width: 156px;
+            height: 156px;
+            margin: 0 auto 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            overflow: hidden;
+        }
+
+        .card-icon img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: contain;
         }
 
         .card-title {
@@ -340,7 +352,7 @@
         }
 
         .personal-stats-card .card-icon {
-            color: #8bc34a;
+            filter: drop-shadow(0 18px 32px rgba(139, 195, 74, 0.28));
         }
 
         .war-room-card {
@@ -353,7 +365,7 @@
         }
 
         .war-room-card .card-icon {
-            color: #689f38;
+            filter: drop-shadow(0 18px 32px rgba(104, 159, 56, 0.22));
         }
 
         .canyon-card {
@@ -366,7 +378,7 @@
         }
 
         .canyon-card .card-icon {
-            color: #bcaaa4;
+            filter: drop-shadow(0 18px 32px rgba(188, 170, 164, 0.18));
         }
 
         .storm-card {
@@ -379,7 +391,78 @@
         }
 
         .storm-card .card-icon {
-            color: #ff9800;
+            filter: drop-shadow(0 18px 32px rgba(255, 152, 0, 0.22));
+        }
+
+        .smorfia-card {
+            border-color: rgba(168, 85, 247, 0.3);
+        }
+        .card-link:hover .smorfia-card {
+            border-color: #a855f7;
+            box-shadow: 0 20px 60px rgba(168, 85, 247, 0.3);
+        }
+        .smorfia-card .card-icon {
+            filter: drop-shadow(0 18px 32px rgba(192, 132, 252, 0.22));
+        }
+
+        .planner-card {
+            border-color: rgba(33, 150, 243, 0.3);
+        }
+        .card-link:hover .planner-card {
+            border-color: #2196f3;
+            box-shadow: 0 20px 60px rgba(33, 150, 243, 0.3);
+        }
+        .planner-card .card-icon {
+            filter: drop-shadow(0 18px 32px rgba(33, 150, 243, 0.22));
+        }
+
+        .server-card {
+            border-color: rgba(0, 188, 212, 0.3);
+        }
+        .card-link:hover .server-card {
+            border-color: #00bcd4;
+            box-shadow: 0 20px 60px rgba(0, 188, 212, 0.3);
+        }
+        .server-card .card-icon {
+            filter: drop-shadow(0 18px 32px rgba(0, 188, 212, 0.22));
+        }
+
+        .ammo-card {
+            border-color: rgba(244, 67, 54, 0.3);
+        }
+        .card-link:hover .ammo-card {
+            border-color: #f44336;
+            box-shadow: 0 20px 60px rgba(244, 67, 54, 0.3);
+        }
+        .ammo-card .card-icon {
+            filter: drop-shadow(0 18px 32px rgba(244, 67, 54, 0.22));
+        }
+
+        .ncf-card {
+            border-color: rgba(76, 175, 80, 0.45);
+            background: rgba(20, 40, 20, 0.85);
+        }
+        .card-link:hover .ncf-card {
+            border-color: #76ff03;
+            box-shadow: 0 20px 60px rgba(118, 255, 3, 0.25);
+        }
+        .ncf-card .card-icon {
+            filter: drop-shadow(0 18px 32px rgba(76, 175, 80, 0.32));
+        }
+        .ncf-seal {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.4rem;
+            font-weight: 900;
+            letter-spacing: 0.15em;
+            color: #76ff03;
+            text-shadow: 0 0 18px rgba(118,255,3,0.5);
+            border-radius: 50%;
+            background: radial-gradient(circle at 35% 35%, rgba(118,255,3,0.15), rgba(76,175,80,0.05));
+            border: 2px solid rgba(76,175,80,0.4);
         }
 
         .r4-modal {
@@ -506,6 +589,110 @@
             color: var(--accent-color);
         }
 
+        .server-status {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            align-items: center;
+            gap: 1rem;
+            padding: 14px 22px;
+            margin-bottom: 30px;
+            background: rgba(20, 35, 20, 0.85);
+            border: 1px solid rgba(76, 175, 80, 0.35);
+            border-radius: 14px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3), 0 0 0 1px rgba(76,175,80,0.08) inset;
+        }
+
+        .ss-state {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-width: 72px;
+            padding: 8px 12px;
+            background: rgba(76,175,80,0.15);
+            border: 1px solid rgba(76,175,80,0.4);
+            border-radius: 10px;
+        }
+
+        .ss-state-label {
+            font-size: 0.62rem;
+            color: #7fa87a;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin-bottom: 2px;
+        }
+
+        .ss-state-value {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--accent-color);
+            letter-spacing: 0.08em;
+            line-height: 1;
+        }
+
+        .ss-body {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .ss-row {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+        }
+
+        .ss-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            padding: 3px 9px;
+            border-radius: 999px;
+            font-size: 0.74rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            background: rgba(255,255,255,0.07);
+            border: 1px solid rgba(255,255,255,0.14);
+            color: #d9e6d6;
+        }
+
+        .ss-chip.season { border-color: rgba(255,152,0,0.45); color: #ffb74d; }
+        .ss-chip.week   { border-color: rgba(76,175,80,0.45); color: #a5d6a7; }
+        .ss-chip.day    { border-color: rgba(118,255,3,0.5); color: var(--accent-color); background: rgba(118,255,3,0.08); }
+        .ss-chip.ally   { border-color: rgba(139,195,74,0.35); color: #c5e1a5; }
+
+        .ss-regions {
+            font-size: 0.72rem;
+            color: #7fa87a;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .ss-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            padding: 8px 14px;
+            border-radius: 9px;
+            border: 1px solid rgba(76,175,80,0.35);
+            background: rgba(76,175,80,0.1);
+            color: #a5d6a7;
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-decoration: none;
+            letter-spacing: 0.08em;
+            white-space: nowrap;
+            transition: all 0.25s;
+        }
+
+        .ss-link:hover {
+            background: rgba(76,175,80,0.22);
+            border-color: rgba(118,255,3,0.5);
+            color: var(--accent-color);
+        }
+
         @media (max-width: 768px) {
             .header h1 {
                 font-size: 2.5em;
@@ -519,6 +706,18 @@
                 position: static;
                 justify-content: center;
                 margin-bottom: 20px;
+            }
+
+            .server-status {
+                grid-template-columns: 1fr;
+                gap: 0.75rem;
+            }
+
+            .ss-state {
+                flex-direction: row;
+                gap: 0.5rem;
+                min-width: 0;
+                width: fit-content;
             }
         }
     </style>
@@ -565,6 +764,23 @@
                 <div class="alliance-tag" id="serverTag">CARICAMENTO...</div>
             </div>
 
+            <div class="server-status" id="serverStatus">
+                <div class="ss-state">
+                    <span class="ss-state-label">State</span>
+                    <span class="ss-state-value">#1105</span>
+                </div>
+                <div class="ss-body">
+                    <div class="ss-row">
+                        <span class="ss-chip season" id="ss-season">Season —</span>
+                        <span class="ss-chip week" id="ss-week">Week —</span>
+                        <span class="ss-chip day" id="ss-day">Day —</span>
+                        <span id="ss-allies">…</span>
+                    </div>
+                    <div class="ss-regions" id="ss-regions">…</div>
+                </div>
+                <a class="ss-link" href="https://serafino86.github.io/s5mapngc/servers/" target="_blank">Servers ↗</a>
+            </div>
+
             <div class="cards-container" id="cardsContainer"></div>
 
             <div class="footer">
@@ -576,7 +792,7 @@
     </div>
 
     <script>
-        const API_URL = 'https://script.google.com/macros/s/AKfycbytx-3o1LELWWtk87qrL-6ef3tB9Zkc2ZIjFAfh2sORj_S1PV0U2XqrQkArQIkm_VPl/exec';
+        const API_URL = 'https://script.google.com/macros/s/REPLACE_WITH_DJN_DEPLOYMENT_ID/exec';
         
         let currentConfig = null;
         let currentLang = 'en';
@@ -600,6 +816,21 @@
                 canyonTitle: 'Strategy Manager',
                 canyonDesc: 'Pianifica e gestisci la strategia per i tornei Canyon e Desert Storm.',
                 canyonBtn: 'Apri Strategia',
+                smorfiaTitle: 'Lotteria DJN',
+                smorfiaDesc: 'Gioca 5 numeri + jolly ogni settimana. Chi indovina di più diventa il Culone della Settimana!',
+                smorfiaBtn: 'Gioca Ora',
+                plannerTitle: 'Planner',
+                plannerDesc: 'Griglia SVG tattica con salvataggio locale, posizionamento palette e visuals da centro di comando.',
+                plannerBtn: 'Apri Planner',
+                serversTitle: 'Server Overview',
+                serversDesc: 'Lista server filtrabile con dataset locale, ordinamento client-side e preferenze salvate.',
+                serversBtn: 'Apri Overview',
+                ammoTitle: 'Ammo Bonanza',
+                ammoDesc: 'Simulazione browser con 5000 run, istogramma distribuzione, senza dipendenze backend.',
+                ammoBtn: 'Avvia Simulazione',
+                ncfTitle: 'Menu Pianificazione',
+                ncfDesc: 'Portale tattico DJN: Planner S5, lista server, calcolatore Ammo Bonanza e guida completa Season 5.',
+                ncfBtn: 'Apri Pianificazione',
                 footerContact: 'Contatti:',
                 r4ErrorTitle: 'Codice R4 Non Valido',
                 r4ErrorMsg: 'Il codice R4 inserito non è corretto. Riprova.',
@@ -623,6 +854,21 @@
                 canyonTitle: 'Strategy Manager',
                 canyonDesc: 'Plan and manage the strategy for Canyon and Desert Storm tournaments.',
                 canyonBtn: 'Open Strategy',
+                smorfiaTitle: 'Lotteria DJN',
+                smorfiaDesc: 'Pick 5 numbers + jolly every week. Best combo wins the Butt of the Week title!',
+                smorfiaBtn: 'Play Now',
+                plannerTitle: 'Planner',
+                plannerDesc: 'Tactical SVG grid with local persistence, palette placement and command-center visuals.',
+                plannerBtn: 'Open Planner',
+                serversTitle: 'Server Overview',
+                serversDesc: 'Filterable server list with local dataset, client-side sorting and saved preferences.',
+                serversBtn: 'Open Overview',
+                ammoTitle: 'Ammo Bonanza',
+                ammoDesc: 'Browser simulation with 5000 runs, distribution histogram and no backend dependency.',
+                ammoBtn: 'Run Simulation',
+                ncfTitle: 'Planning Menu',
+                ncfDesc: 'DJN tactical portal: S5 Planner, server list, Ammo Bonanza calculator and full Season 5 guide.',
+                ncfBtn: 'Open Planning',
                 footerContact: 'Contacts:',
                 r4ErrorTitle: 'Invalid R4 Code',
                 r4ErrorMsg: 'The R4 code entered is incorrect. Try again.',
@@ -646,6 +892,21 @@
                 canyonTitle: 'Gestionnaire de Stratégie',
                 canyonDesc: 'Planifiez et gérez la stratégie pour les tournois Canyon et Desert Storm.',
                 canyonBtn: 'Ouvrir Stratégie',
+                smorfiaTitle: 'Lotteria DJN',
+                smorfiaDesc: 'Joue 5 numéros + joker chaque semaine. Le meilleur gagne le titre de Gros Derrière!',
+                smorfiaBtn: 'Jouer Maintenant',
+                plannerTitle: 'Planificateur',
+                plannerDesc: 'Grille SVG tactique avec sauvegarde locale, placement de palette et visuels centre de commandement.',
+                plannerBtn: 'Ouvrir Planificateur',
+                serversTitle: 'Vue Serveurs',
+                serversDesc: 'Liste de serveurs filtrable avec données locales, tri côté client et préférences sauvegardées.',
+                serversBtn: 'Ouvrir Vue',
+                ammoTitle: 'Ammo Bonanza',
+                ammoDesc: 'Simulation navigateur avec 5000 tours, histogramme de distribution, sans dépendance backend.',
+                ammoBtn: 'Lancer Simulation',
+                ncfTitle: 'Menu Planification',
+                ncfDesc: 'Portail tactique DJN : Planificateur S5, liste serveurs, calculateur Ammo Bonanza et guide complet Saison 5.',
+                ncfBtn: 'Ouvrir Planification',
                 footerContact: 'Contacts:',
                 r4ErrorTitle: 'Code R4 Invalide',
                 r4ErrorMsg: 'Le code R4 entré est incorrect. Réessayez.',
@@ -669,6 +930,21 @@
                 canyonTitle: 'Strategie-Manager',
                 canyonDesc: 'Planen und verwalten Sie die Strategie für Canyon- und Desert Storm-Turniere.',
                 canyonBtn: 'Strategie öffnen',
+                smorfiaTitle: 'Lotteria DJN',
+                smorfiaDesc: 'Tippe jede Woche 5 Zahlen + Joker. Die beste Kombination gewinnt den Hintern der Woche!',
+                smorfiaBtn: 'Jetzt Spielen',
+                plannerTitle: 'Planer',
+                plannerDesc: 'Taktisches SVG-Raster mit lokaler Speicherung, Palettenplatzierung und Kommandozentralen-Visuals.',
+                plannerBtn: 'Planer öffnen',
+                serversTitle: 'Server-Übersicht',
+                serversDesc: 'Filterbare Serverliste mit lokalem Datensatz, clientseitiger Sortierung und gespeicherten Einstellungen.',
+                serversBtn: 'Übersicht öffnen',
+                ammoTitle: 'Ammo Bonanza',
+                ammoDesc: 'Browser-Simulation mit 5000 Durchläufen, Verteilungshistogramm ohne Backend-Abhängigkeit.',
+                ammoBtn: 'Simulation starten',
+                ncfTitle: 'Planungsmenü',
+                ncfDesc: 'Taktisches DJN-Portal: S5-Planer, Serverliste, Ammo-Bonanza-Rechner und vollständiger Season-5-Guide.',
+                ncfBtn: 'Planung öffnen',
                 footerContact: 'Kontakte:',
                 r4ErrorTitle: 'Ungültiger R4-Code',
                 r4ErrorMsg: 'Der eingegebene R4-Code ist falsch. Versuchen Sie es erneut.',
@@ -690,6 +966,66 @@
                 console.error('Init error:', error);
                 showError();
             }
+            loadServerStatus(); // non-blocking, runs in background
+        }
+
+        async function loadServerStatus() {
+            const SERVER_ID = '1105';
+            const CREATION_TS = 1731834001000; // State#1105 creation date
+
+            // Day counter — always computed from creation timestamp
+            const dayNum = Math.floor((Date.now() - CREATION_TS) / 86400000) + 1;
+            const dayEl = document.getElementById('ss-day');
+            if (dayEl) dayEl.textContent = 'Day ' + dayNum;
+
+            // Fetch season/week/regions from servers.json
+            try {
+                const srResp = await fetch('https://serafino86.github.io/s5mapngc/assets/data/servers.json');
+                const srData = await srResp.json();
+                const srv = srData.c.find(function(s) { return s.id === SERVER_ID; });
+                if (srv) {
+                    const seasonEl = document.getElementById('ss-season');
+                    const weekEl   = document.getElementById('ss-week');
+                    const regEl    = document.getElementById('ss-regions');
+                    if (seasonEl) seasonEl.textContent = 'Season ' + srv.currentSeason + (srv.isPostSeason ? ' PS' : '');
+                    if (weekEl)   weekEl.textContent   = 'Week ' + srv.currentWeek;
+                    if (regEl && srv.region && srv.region.length) {
+                        regEl.textContent = srv.region.map(function(r) {
+                            return r.charAt(0).toUpperCase() + r.slice(1);
+                        }).join(' · ');
+                    }
+                }
+            } catch(e) { console.warn('servers.json fetch failed', e); }
+
+            // Fetch live alliances from Google Sheet via GViz (public sheet, no auth needed)
+            try {
+                const sheetId = '1JWa6CzPfT2hRRKwv9zJCZ-nV5Xy9r1ydFf8YEPbO0KI';
+                const gvizUrl = 'https://docs.google.com/spreadsheets/d/' + sheetId + '/gviz/tq?tqx=out:json&gid=0';
+                const gvResp  = await fetch(gvizUrl);
+                const text    = await gvResp.text();
+                // GViz wraps response: /*O_o*/\ngoogle.visualization.Query.setResponse({...});
+                const raw     = text.replace(/^[^(]+\(/, '').replace(/\);?\s*$/, '');
+                const gv      = JSON.parse(raw);
+                const rows    = gv.table.rows;
+
+                for (var ri = 0; ri < rows.length; ri++) {
+                    var row = rows[ri];
+                    if (!row.c || !row.c[0] || row.c[0].v == null) continue;
+                    if (String(row.c[0].v).trim() === SERVER_ID) {
+                        var alliances = [];
+                        for (var ci = 1; ci <= 10; ci++) {
+                            if (row.c[ci] && row.c[ci].v) alliances.push(String(row.c[ci].v).trim());
+                        }
+                        var alliesEl = document.getElementById('ss-allies');
+                        if (alliesEl) {
+                            alliesEl.innerHTML = alliances.map(function(a) {
+                                return '<span class="ss-chip ally">' + a + '</span>';
+                            }).join('');
+                        }
+                        break;
+                    }
+                }
+            } catch(e) { console.warn('GViz fetch failed', e); }
         }
 
         async function loadConfig() {
@@ -712,11 +1048,11 @@
             } catch (error) {
                 console.error('Config load error:', error);
                 currentConfig = {
-                    alliance_name: 'CZNS',
+                    alliance_name: 'DJN',
                     server: 'TBD',
-                    primary_color: '#ff5722',
-                    secondary_color: '#ff7043',
-                    accent_color: '#ff6e40',
+                    primary_color: '#2196f3',
+                    secondary_color: '#64b5f6',
+                    accent_color: '#42a5f5',
                     logo_url: '',
                     language: 'en',
                     announcement: '',
@@ -783,39 +1119,66 @@
             
             const cards = [
                 {
-                    icon: '📊',
+                    iconSrc: 'assets/generated-icons/stats-3d.png',
+                    iconAlt: 'Stats icon',
                     title: t.personalStatsTitle,
                     description: t.personalStatsDesc,
                     button: t.personalStatsBtn,
                     class: 'personal-stats-card',
                     locked: false,
-                    app: 'ngc-personal-stats'
+                    url: 'ngc-personal-stats.html'
                 },
                 {
-                    icon: '⚔️',
+                    iconSrc: 'assets/generated-icons/war-room-3d.png',
+                    iconAlt: 'War Room icon',
                     title: t.warRoomTitle,
                     description: t.warRoomDesc,
                     button: t.warRoomBtn,
                     class: 'war-room-card',
                     locked: false,
-                    app: 'war-room-defense-tracker'
+                    url: 'war-room-defense-tracker.html'
                 },
                 {
-                    icon: '🗺️',  // ✅ Mappa generica per Strategy
+                    iconSrc: 'assets/generated-icons/strategy-3d.png',
+                    iconAlt: 'Strategy icon',
                     title: t.canyonTitle,
                     description: t.canyonDesc,
                     button: t.canyonBtn,
                     class: 'canyon-card',
                     locked: true,
-                    app: 'strategy'  // ✅ Link unificato
+                    url: 'alliance-strategy-ENHANCED.html'
+                },
+                {
+                    iconSrc: 'assets/generated-icons/lottery-ngc-3d.png',
+                    iconAlt: 'Lottery icon',
+                    title: t.smorfiaTitle,
+                    description: t.smorfiaDesc,
+                    button: t.smorfiaBtn,
+                    class: 'smorfia-card',
+                    locked: false,
+                    url: 'smorfia-game.html'
+                },
+                {
+                    iconSrc: 'assets/generated-icons/ncf-3d.jpg',
+                    iconAlt: 'Menu Pianificazione icon',
+                    title: t.ncfTitle,
+                    description: t.ncfDesc,
+                    button: t.ncfBtn,
+                    class: 'ncf-card',
+                    locked: false,
+                    external: true,
+                    url: 'https://serafino86.github.io/s5mapngc/'
                 }
             ];
             
             container.innerHTML = cards.map(card => `
-                <a class="card-link" onclick="openApp('${card.app}', ${card.locked}); return false;" href="#">
+                <a class="card-link" onclick="openApp('${card.url}', ${card.locked}, ${!!card.external}); return false;" href="#">
                     <div class="command-card ${card.class}">
                         ${card.locked ? '<div class="card-lock">🔒</div>' : ''}
-                        <div class="card-icon">${card.icon}</div>
+                        <div class="card-icon">${card.iconSrc
+                            ? `<img src="${card.iconSrc}" alt="${card.iconAlt}" loading="lazy">`
+                            : `<div class="ncf-seal">NCF</div>`
+                        }</div>
                         <h2 class="card-title">${card.title}</h2>
                         <p class="card-description">${card.description}</p>
                         <div class="card-button">${card.button}</div>
@@ -824,14 +1187,16 @@
             `).join('');
         }
 
-        function openApp(app, locked) {
+        function openApp(url, locked, external) {
             if (locked) {
-                pendingR4App = app;
+                pendingR4App = url;
                 document.getElementById('r4Modal').classList.add('visible');
                 document.getElementById('r4CodeInput').value = '';
                 document.getElementById('r4CodeInput').focus();
+            } else if (external) {
+                window.open(url, '_blank', 'noopener');
             } else {
-                window.location.href = `${app}.html`;
+                window.location.href = url;
             }
         }
 
@@ -849,8 +1214,7 @@
                 
                 if (data.status === 'success' && data.data.valid) {
                     sessionStorage.setItem('r4Code', code);
-                    const url = 'alliance-strategy-ENHANCED.html';
-                    window.location.href = url;
+                    window.location.href = pendingR4App;
                 } else {
                     alert(translations[currentLang].r4ErrorMsg);
                     document.getElementById('r4CodeInput').value = '';

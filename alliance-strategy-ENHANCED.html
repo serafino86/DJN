@@ -4,7 +4,7 @@
 <head>
 <!--
   ╔═══════════════════════════════════════════════════════════════════╗
-  ║  NGC Strategy Manager - Canyon & Desert Storm Coordinator         ║
+  ║  DJN Strategy Manager - Canyon & Desert Storm Coordinator         ║
   ║  Copyright (c) 2025 Serafino                                      ║
   ║  Contact: serafino.ngc@gmail.com                                  ║
   ║  All rights reserved.                                             ║
@@ -644,10 +644,21 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 3px solid rgba(255, 255, 255, 0.8);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.8);
+  border: none;
+  background: transparent !important;
+  box-shadow: none;
   position: relative;
   font-size: 32px;
+}
+
+/* Custom 3D building asset */
+.node-building {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 10px rgba(0,0,0,0.9));
+  pointer-events: none;
+  image-rendering: -webkit-optimize-contrast;
 }
 
 .map-protected-badge {
@@ -1165,6 +1176,7 @@ body {
   </style>
 </head>
 <body>
+<a href="index.html" style="position:fixed;top:10px;left:10px;z-index:9999;background:rgba(15,23,42,0.85);border:1px solid rgba(255,255,255,0.2);color:#94a3b8;padding:6px 12px;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none;backdrop-filter:blur(6px);transition:background 0.2s;" onmouseover="this.style.background='rgba(37,99,235,0.7)';this.style.color='#fff'" onmouseout="this.style.background='rgba(15,23,42,0.85)';this.style.color='#94a3b8'">← Home</a>
 <!-- ✅ TOGGLE BUTTON per nascondere/mostrare header -->
 <button class="header-toggle" id="headerToggle" title="Show/Hide Header">▲</button>
 
@@ -1369,7 +1381,7 @@ body {
 <script>
 // ===== CONFIGURATION =====
 // ✅ URL AGGIORNATO con il nuovo deployment (Versione 8)
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbytx-3o1LELWWtk87qrL-6ef3tB9Zkc2ZIjFAfh2sORj_S1PV0U2XqrQkArQIkm_VPl/exec";
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/REPLACE_WITH_DJN_DEPLOYMENT_ID/exec";
 
 // ✅ COMANDI TATTICI (con prefisso per riconoscerli)
 const TACTICAL_COMMANDS = [
@@ -1648,6 +1660,54 @@ const modeConfigs = {
   }
 };
 
+// ===== CUSTOM BUILDING ICONS =====
+// Assets: assets/war-icons/<filename>.webp (transparent background)
+// Falls back to emoji if image missing or fails to load
+const STRUCTURE_ICONS = {
+  // Desert Storm
+  'hospital':        'assets/war-icons/medical-3d.png',
+  'refinery':        'assets/war-icons/gear-3d.png',
+  'info center':     'assets/war-icons/info-3d.png',
+  'tech center':     'assets/war-icons/radar-3d.png',
+  'merc factory':    'assets/war-icons/city-3d.png',
+  'arsenal':         'assets/war-icons/turret-3d.png',
+  'nuclear silo':    'assets/war-icons/nuclear-3d.png',
+  // Canyon
+  'data center':     'assets/war-icons/datacenter-3d.png',
+  'serum factory':   'assets/war-icons/serum-3d.png',
+  'power tower':     'assets/war-icons/power-3d.png',
+  'defense system':  'assets/war-icons/defense-3d.png',
+  'virus lab':       'assets/war-icons/virus-3d.png',
+  'sample warehouse':'assets/war-icons/warehouse-3d.png',
+};
+
+function getStructureAsset(b) {
+  const key = (b.type && b.type.en || '').toLowerCase();
+  return STRUCTURE_ICONS[key] || null;
+}
+
+function renderStructureIcon(b, tile) {
+  const assetUrl = getStructureAsset(b);
+  if (assetUrl) {
+    const img = document.createElement('img');
+    img.className = 'node-building';
+    img.src = assetUrl;
+    img.alt = b.type.en;
+    img.setAttribute('data-structure-type', (b.type.en || '').toLowerCase().replace(/\s+/g, '-'));
+    img.onerror = function() {
+      this.style.display = 'none';
+      const fb = document.createElement('div');
+      fb.textContent = b.icon;
+      this.parentNode.appendChild(fb);
+    };
+    tile.appendChild(img);
+  } else {
+    const icon = document.createElement('div');
+    icon.textContent = b.icon;
+    tile.appendChild(icon);
+  }
+}
+
 // ===== STATE =====
 let currentMode = 'canyon';
 let currentLang = 'en';
@@ -1659,7 +1719,7 @@ let lastFormationData = []; // Loaded formation
 let attendanceData = {}; // {playerName: 'YES' or 'NO'}
 let players = {};
 let allianceConfig = {
-  alliance_name: "NGC",
+  alliance_name: "DJN",
   alliance_color: "#4a6b47",
   alliance_logo: "🎯",
   tagline: "Tactical Warfare Division"
@@ -1739,7 +1799,7 @@ async function loadAllianceConfig() {
     if (result.status === 'success') {
       const config = result.data;
       allianceConfig = {
-        alliance_name: config.alliance_name || 'NGC',
+        alliance_name: config.alliance_name || 'DJN',
         alliance_logo: config.logo_url ? `<img src="${config.logo_url}" style="height:24px">` : '🎯',
         alliance_color: config.primary_color || '#4a6b47',
         tagline: config.announcement || 'Tactical Warfare Division'
@@ -2423,7 +2483,7 @@ function renderEditView() {
     const icon = document.createElement('div');
     icon.className = 'building-icon';
     icon.style.backgroundColor = b.color;
-    icon.textContent = b.icon;
+    renderStructureIcon(b, icon);
 
     if (b.protected) {
       const badge = document.createElement('div');
@@ -2595,7 +2655,19 @@ function renderScreenshotView() {
   }
 
   const mapContainer = document.getElementById('mapContainer');
-  mapContainer.style.background = modeConfigs[currentMode].mapColor;
+  const bgImages = {
+    canyon: 'assets/war-icons/bg-canyon.jpg',
+    desert: 'assets/war-icons/bg-desert.jpg'
+  };
+  const bgFile = bgImages[currentMode];
+  if (bgFile) {
+    mapContainer.style.backgroundImage = `url('${bgFile}')`;
+    mapContainer.style.backgroundSize = 'cover';
+    mapContainer.style.backgroundPosition = 'center';
+  } else {
+    mapContainer.style.backgroundImage = '';
+    mapContainer.style.background = modeConfigs[currentMode].mapColor;
+  }
   mapContainer.innerHTML = "";
 
   buildings.forEach(b => {
@@ -2606,7 +2678,6 @@ function renderScreenshotView() {
 
     const tile = document.createElement('div');
     tile.className = 'map-building-tile';
-    tile.style.backgroundColor = b.color;
 
     if (b.protected) {
       const protectedBadge = document.createElement('div');
@@ -2620,9 +2691,7 @@ function renderScreenshotView() {
     idBadge.textContent = b.id;
     tile.appendChild(idBadge);
 
-    const icon = document.createElement('div');
-    icon.textContent = b.icon;
-    tile.appendChild(icon);
+    renderStructureIcon(b, tile);
 
     wrapper.appendChild(tile);
 
@@ -3177,7 +3246,7 @@ async function saveAttendance() {
     
     const response = await fetch(GOOGLE_SCRIPT_URL, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'text/plain' },
       body: JSON.stringify(payload)
     });
     
